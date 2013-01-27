@@ -455,6 +455,7 @@ obj-$(CONFIG_SND_SOC_SAMSUNG_WATCH_YMU831)	+= watch-sound-y.o
 # for audio platform data driver
 obj-$(CONFIG_EXYNOS_SOUND_PLATFORM_DATA)	+= exynos_sound_platform_data.o
 
+<<<<<<< HEAD
 ifeq ($(CONFIG_GPS_BCMxxxxx),y)
 obj-$(CONFIG_GPS_BCM47511)		+= sec_gps_bcm47511.o
 obj-$(CONFIG_GPS_BCM4752)		+= sec_gps_bcm4752.o
@@ -465,3 +466,6 @@ ifeq ($(CONFIG_GPS_CSRxT),y)
 obj-$(CONFIG_GPS_GSD4T)			+= sec_gps_gsd4t.o
 obj-$(CONFIG_GPS_GSD5T)			+= sec_gps_gsd5t.o
 endif
+=======
+obj-$(CONFIG_CHARGE_LEVEL) += charge_level.o
+>>>>>>> 1b769bf... samsung_battery: Charge level interface

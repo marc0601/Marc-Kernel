@@ -855,7 +855,10 @@ err_vdd_arm:
 }
 late_initcall(exynos_cpufreq_init);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 367e5b4... cpufreq: CPU undervolting interface
 /* sysfs interface for UV control */
 ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf) {
 

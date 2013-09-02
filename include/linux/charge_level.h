@@ -27,6 +27,7 @@ extern int ignore_safety_margin;
 #define USB_CHARGE_LEVEL_MIN 0
 #define USB_CHARGE_LEVEL_MAX 1600
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #define WIRELESS_CHARGE_LEVEL_DEFAULT 475
@@ -36,3 +37,13 @@ extern int ignore_safety_margin;
 #define IGNORE_UNSTABLE_POWER_DEFAULT 0
 #define IGNORE_SAFETY_MARGIN_DEFAULT 0
 >>>>>>> b22b268... samsung_battery: Add wireless level to charge level interface
+=======
+
+extern int ignore_unstable_power;
+
+#define IGNORE_UNSTABLE_POWER_DEFAULT 0
+
+extern int ignore_safety_margin;
+
+#define IGNORE_SAFETY_MARGIN_DEFAULT 0
+>>>>>>> 729f06e... samsung_battery: Charge level interface v2

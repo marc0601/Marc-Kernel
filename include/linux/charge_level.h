@@ -1,5 +1,5 @@
 /*
- * Author: andip71, 27.01.2013
+ * Author: andip71, 01.12.2013
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -36,6 +36,7 @@ extern int ignore_safety_margin;
 
 #define IGNORE_UNSTABLE_POWER_DEFAULT 0
 #define IGNORE_SAFETY_MARGIN_DEFAULT 0
+<<<<<<< HEAD
 >>>>>>> b22b268... samsung_battery: Add wireless level to charge level interface
 =======
 
@@ -47,3 +48,8 @@ extern int ignore_safety_margin;
 
 #define IGNORE_SAFETY_MARGIN_DEFAULT 0
 >>>>>>> 729f06e... samsung_battery: Charge level interface v2
+=======
+
+extern char charge_info_text[30];
+extern int charge_info_level;
+>>>>>>> aa19099... samsung-battery: Add charge info to charge level interface V2

@@ -73,9 +73,9 @@ fi;
 chmod -R 755 /tmp/anykernel/tools /tmp/anykernel/bin;
 bb=/tmp/anykernel/tools/busybox;
 
-ui_print "Hybrid AGNi Kernel";
+ui_print "Marc-Kernel For MIUI";
 ui_print " ";
-ui_print "(c) psndna88, Lord Boeffla (aka andip71) and pascua28";
+ui_print "(c) marc0601";
 ui_print " ";
 
 umount /system;

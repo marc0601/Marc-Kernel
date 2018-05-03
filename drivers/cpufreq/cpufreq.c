@@ -558,10 +558,7 @@ static ssize_t show_scaling_setspeed(struct cpufreq_policy *policy, char *buf)
 extern ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf);
 extern ssize_t store_UV_mV_table(struct cpufreq_policy *policy,
                                       const char *buf, size_t count);
-<<<<<<< HEAD
-=======
 
->>>>>>> 367e5b4... cpufreq: CPU undervolting interface
 /**
  * show_scaling_driver - show the current cpufreq HW/BIOS limitation
  */
@@ -593,10 +590,7 @@ cpufreq_freq_attr_rw(scaling_governor);
 cpufreq_freq_attr_rw(scaling_setspeed);
 /* UV table */
 cpufreq_freq_attr_rw(UV_mV_table);
-<<<<<<< HEAD
-=======
 
->>>>>>> 367e5b4... cpufreq: CPU undervolting interface
 static struct attribute *default_attrs[] = {
 	&cpuinfo_min_freq.attr,
 	&cpuinfo_max_freq.attr,

@@ -27,10 +27,6 @@
 /* CPU UV DEFINES */
 #define CPU_UV_MV_MAX 1500000
 #define CPU_UV_MV_MIN 600000
-<<<<<<< HEAD
-
-=======
->>>>>>> 367e5b4... cpufreq: CPU undervolting interface
 
 /*********************************************************************
  *                     CPUFREQ NOTIFIER INTERFACE                    *

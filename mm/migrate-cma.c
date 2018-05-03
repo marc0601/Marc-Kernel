@@ -474,7 +474,7 @@ static int __migrate_page(struct address_space *mapping,
 }
 
 int migrate_page(struct address_space *mapping,
-		struct page *newpage, struct page *page)
+		struct page *newpage, struct page *page, enum migrate_mode)
 {
 	return __migrate_page(mapping, newpage, page, 0, 0);
 }
@@ -487,7 +487,7 @@ EXPORT_SYMBOL(migrate_page);
  * exist.
  */
 int buffer_migrate_page(struct address_space *mapping,
-		struct page *newpage, struct page *page)
+		struct page *newpage, struct page *page, enum migrate_mode mode)
 {
 	struct buffer_head *bh, *head;
 	int rc;
@@ -633,7 +633,7 @@ static int fallback_migrate_page(struct address_space *mapping,
  *  == 0 - success
  */
 static int move_to_new_page(struct page *newpage, struct page *page,
-					int remap_swapcache, bool sync,
+					int remap_swapcache, enum migrate_mode mode,
 					int pass, int tries)
 {
 	struct address_space *mapping;
@@ -687,7 +687,7 @@ static int move_to_new_page(struct page *newpage, struct page *page,
 			 * path for page migration.
 			 */
 			rc = mapping->a_ops->migratepage(mapping,
-							newpage, page);
+							newpage, page, mode);
 			if (rc) {
 				if (is_failed_page(page, pass, tries)) {
 					printk(KERN_ERR "%s[%d]: 3 ",
@@ -725,7 +725,7 @@ static int move_to_new_page(struct page *newpage, struct page *page,
  * to the newly allocated page in newpage.
  */
 static int unmap_and_move(new_page_t get_new_page, unsigned long private,
-			struct page *page, int force, bool offlining, bool sync,
+			struct page *page, int force, bool offlining, enum migrate_mode mode,
 			int pass, int tries)
 {
 	int rc = 0;
@@ -966,7 +966,7 @@ move_newpage:
  */
 static int unmap_and_move_huge_page(new_page_t get_new_page,
 				unsigned long private, struct page *hpage,
-				int force, bool offlining, bool sync)
+				int force, bool offlining, enum migrate_mode mode)
 {
 	int rc = 0;
 	int *result = NULL;
@@ -1035,7 +1035,7 @@ struct page *migrate_pages_current = NULL;
  */
 int migrate_pages(struct list_head *from,
 		new_page_t get_new_page, unsigned long private, bool offlining,
-		bool sync, int tries)
+		enum migrate_mode mode, int tries)
 {
 	int retry = 1;
 	int nr_failed = 0;
@@ -1094,7 +1094,7 @@ out:
 
 int migrate_huge_pages(struct list_head *from,
 		new_page_t get_new_page, unsigned long private, bool offlining,
-		bool sync)
+		enum migrate_mode mode)
 {
 	int retry = 1;
 	int nr_failed = 0;

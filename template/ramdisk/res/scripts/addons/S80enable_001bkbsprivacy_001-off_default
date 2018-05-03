@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Privacy mode
+#Mute speaker when headphone plugged:
+#Off (default)
+
+echo 0 > /sys/class/misc/boeffla_sound/privacy_mode

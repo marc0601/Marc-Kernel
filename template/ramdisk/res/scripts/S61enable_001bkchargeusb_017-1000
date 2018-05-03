@@ -1,0 +1,7 @@
+#!/sbin/busybox sh
+#USB Charge Rate
+#Set charging rate when connected to USB
+#1000 mA
+
+echo 1000 > /sys/kernel/charge_levels/charge_level_usb
+

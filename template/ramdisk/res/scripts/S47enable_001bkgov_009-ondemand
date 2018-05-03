@@ -1,0 +1,25 @@
+#!/system/bin/sh
+#Governor
+#Change CPU governor:
+#ondemand
+
+/sbin/busybox mount -o rw,remount /
+/sbin/busybox mount -o rw,remount /system
+
+# Clearing existing selected relevant scripts
+/sbin/busybox rm /system/etc/init.d/*001bkschedmcpowersavings*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandd*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandf*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandr*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandi*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandl*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandp*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemands*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandt*
+
+# switch governor
+chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+/sbin/busybox sleep 2
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+

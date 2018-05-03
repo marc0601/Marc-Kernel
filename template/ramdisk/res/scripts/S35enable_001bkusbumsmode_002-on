@@ -1,0 +1,30 @@
+#!/sbin/sh
+#USB MASS STORAGE MODE (UMS)
+#ENABLE/DISABLE UMS MODE for external sdcard :
+#On
+
+#STOCK 4.4.x
+
+USB_GADGET="/sys/devices/platform/s3c-usbgadget/gadget/lun0/file"
+
+EXTERNAL_SD_MOUNT_POINT="/mnt/media_rw/extSdCard"
+
+EXTERNAL_SD_LOCATION="/dev/block/vold/179:49"
+
+/sbin/busybox sync
+/sbin/busybox sh /system/bin/am force-stop fuse_extSdCard 
+/sbin/busybox umount /storage/extSdCard
+/sbin/busybox umount -l /mnt/media_rw/extSdCard
+/sbin/busybox umount -l /mnt/secure/asec
+
+/sbin/busybox echo "/dev/block/vold/179:49" > /sys/devices/platform/s3c-usbgadget/gadget/lun0/file
+
+#/system/bin/setprop sys.usb.config mass_storage,adb
+
+echo 0 > /sys/class/android_usb/android0/enable
+echo "04e8" > /sys/class/android_usb/android0/idVendor
+echo "685e" > /sys/class/android_usb/android0/idProduct
+echo "mass_storage,adb" > /sys/class/android_usb/android0/functions
+echo 1 > /sys/class/android_usb/android0/enable
+/system/bin/setprop sys.usb.state mass_storage,adb
+

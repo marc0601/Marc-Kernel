@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#DAC direct
+#Bypass the output mixer:
+#Off (default)
+
+echo 0 > /sys/class/misc/boeffla_sound/dac_direct

@@ -1,0 +1,96 @@
+#!/system/bin/sh
+#AGNi Main Profiles Selection
+#This affects only CPU governor, CPU Max Frequency, GPU Frequency, GPU & CPU UV, GPU threshold, sched_mc_power_savings
+#AGNi-Battery Save
+
+# Rev. v2.0 (28-04-2015) N710x
+
+/sbin/busybox mount -o rw,remount /
+/sbin/busybox mount -o rw,remount /system
+
+# Clearing existing selected relevant scripts
+/sbin/busybox rm /system/etc/init.d/*001bkgov*
+/sbin/busybox rm /system/etc/init.d/*001bkcpufreq*
+/sbin/busybox rm /system/etc/init.d/*001bkgpufreq*
+/sbin/busybox rm /system/etc/init.d/*001bkgpuuv*
+/sbin/busybox rm /system/etc/init.d/*001bkcpuuv*
+/sbin/busybox rm /system/etc/init.d/*001bkgputhreshold*
+/sbin/busybox rm /system/etc/init.d/*001bkschedmcpowersavings*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandd*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandf*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandr*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandi*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandl*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandp*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemands*
+/sbin/busybox rm /system/etc/init.d/*001bkfunctionondemandt*
+
+BB="/sbin/busybox"
+SCRPTLOC="/res/scripts"
+INITDLOC="/system/etc/init.d"
+
+# 	Battery Save Profile :-
+# CPU Governor		: zzmoove_bat
+# CPU Freq Max		: 1200
+# CPU Freq Min		: 200
+# CPU UV		: off
+# GPU Freq		: 160-533
+# GPU UV		: off
+# GPU Threshold		: battsave
+# Sched MC Power Saving	: medium
+
+GOV="S47enable_001bkgov_021-zzmoove_bat"
+CPUFREQMAX="S50enable_001bkcpufreq_040-1200"
+CPUFREQMIN="S52enable_001bkmincpufreq_010-200_default" #D
+CPUUV="S51enable_001bkcpuuv_001-off_default" #D
+GPUFREQ="S53enable_001bkgpufreq_050-160to533_default" #D
+GPUUV="S54enable_001bkgpuuv_050-off_default" #D
+GPUTHRESHD="S55enable_001bkgputhreshold_020-on_battsave"
+SCHDMCPOWSAV="S77enable_001bkschedmcpowersavings_020-medium"
+
+### CPU Governor
+$BB cp $SCRPTLOC/$GOV $INITDLOC
+$BB chmod 777 $INITDLOC/$GOV
+$BB sh $INITDLOC/$GOV
+
+### CPU Freq Max
+$BB cp $SCRPTLOC/$CPUFREQMAX $INITDLOC
+$BB chmod 777 $SCRPTLOC/$CPUFREQMAX
+$BB sh $SCRPTLOC/$CPUFREQMAX
+
+### CPU Freq Min #D
+#$BB cp $SCRPTLOC/$CPUFREQMIN $INITDLOC
+$BB chmod 777 $SCRPTLOC/$CPUFREQMIN
+$BB sh $SCRPTLOC/$CPUFREQMIN
+
+### CPU UV #D
+#$BB cp $SCRPTLOC/$CPUUV $INITDLOC
+$BB chmod 777 $SCRPTLOC/$CPUUV
+$BB sh $SCRPTLOC/$CPUUV
+
+### GPU Freq #D
+#$BB cp $SCRPTLOC/$GPUFREQ $INITDLOC
+$BB chmod 777 $SCRPTLOC/$GPUFREQ
+$BB sh $SCRPTLOC/$GPUFREQ
+
+### GPU UV #D
+#$BB cp $SCRPTLOC/$GPUUV $INITDLOC
+$BB chmod 777 $SCRPTLOC/$GPUUV
+$BB sh $SCRPTLOC/$GPUUV
+
+### GPU Threshold
+$BB cp $SCRPTLOC/$GPUTHRESHD $INITDLOC
+$BB chmod 777 $INITDLOC/$GPUTHRESHD
+$BB sh $INITDLOC/$GPUTHRESHD
+
+### Sched MC Power Saving
+$BB cp $SCRPTLOC/$SCHDMCPOWSAV $INITDLOC
+$BB chmod 777 $SCRPTLOC/$SCHDMCPOWSAV
+$BB sh $SCRPTLOC/$SCHDMCPOWSAV
+
+## Setting this script as non-executable
+/sbin/busybox chmod 0666 /system/etc/init.d/S46enable_001bkprofiles_*
+
+# Mounting /system RO
+/sbin/busybox mount -o ro,remount /
+/sbin/busybox mount -o ro,remount /system

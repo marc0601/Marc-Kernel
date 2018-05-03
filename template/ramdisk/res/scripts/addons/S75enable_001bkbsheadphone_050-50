@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Headphone volume
+#Change headphone volume:
+#Vol 50 (Samsung Stock)
+
+echo "50 50" > /sys/class/misc/boeffla_sound/headphone_volume

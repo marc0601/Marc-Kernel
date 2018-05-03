@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+#Touch Wake
+#Enable or disable Touch to Wake:
+#5 sec
+
+echo "1" > /sys/class/misc/touchwakee/tw_enabled
+echo "5" > /sys/class/misc/touchwakee/tw_delay
+echo "0" > /sys/class/misc/touchwakee/tw_charger_mode
+

@@ -1,0 +1,7 @@
+#!/sbin/busybox sh
+#Ignore Safety Margin
+#Control the 100mV Charging Safety Margin
+#off (default)
+
+echo 0 > /sys/kernel/charge_levels/ignore_safety_margin
+

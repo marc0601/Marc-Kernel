@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Speaker tuning
+#Improve sound of speaker for media playback
+#On
+
+echo 1 > /sys/class/misc/boeffla_sound/speaker_tuning

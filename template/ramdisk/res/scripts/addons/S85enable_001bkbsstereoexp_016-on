@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Stereo expansion
+#Enable stereo expansion effect:
+#On
+
+echo 25 > /sys/class/misc/boeffla_sound/stereo_expansion

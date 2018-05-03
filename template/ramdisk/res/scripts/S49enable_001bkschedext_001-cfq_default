@@ -1,0 +1,9 @@
+#!/system/bin/sh
+#Scheduler (ext SD)
+#Change I/O scheduler for external SD memory:
+#CFQ (default) 
+
+chmod 666 /sys/block/mmcblk1/queue/scheduler
+echo "cfq" > /sys/block/mmcblk1/queue/scheduler
+chmod 444 /sys/block/mmcblk1/queue/scheduler
+

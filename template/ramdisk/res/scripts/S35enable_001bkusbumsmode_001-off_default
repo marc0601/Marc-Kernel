@@ -1,0 +1,27 @@
+#!/sbin/sh
+#USB MASS STORAGE MODE (UMS)
+#ENABLE/DISABLE UMS MODE for external sdcard :
+#Off (Default)
+
+#STOCK 4.4.x
+
+/sbin/busybox echo "" > /sys/devices/platform/s3c-usbgadget/gadget/lun0/file
+/sbin/busybox mount -t vfat,exfat -o rw,dirsync,nosuid,nodev,noexec,noatime,nodiratime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=utf8,namecase=0,errors=remount-ro /dev/block/vold/179:49 /mnt/secure/asec
+/system/bin/sdcard -u 1023 -g 1023 -w 1023 -d -f /mnt/media_rw/extSdCard /storage/extSdCard
+export SECONDARY_STORAGE="/storage/extSdCard"
+/sbin/busybox sleep 2
+/system/bin/vold
+/sbin/busybox sleep 2
+
+#/sbin/sh ps | grep adbd | awk '{print $2}' | xargs kill
+#/system/bin/setprop sys.usb.config mtp,adb
+#/system/bin/setprop persist.sys.usb.config mtp,adb
+
+echo 0 > /sys/class/android_usb/android0/enable
+echo 0 > /sys/class/android_usb/android0/bDeviceClass
+echo "04e8" > /sys/class/android_usb/android0/idVendor
+echo "6860" > /sys/class/android_usb/android0/idProduct
+echo "mtp,adb" > /sys/class/android_usb/android0/functions
+echo 1 > /sys/class/android_usb/android0/enable
+/system/bin/setprop sys.usb.state mtp,adb
+

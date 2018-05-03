@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Sound Control Master Switch
+#Change Sound Mod Selection:
+#OFF (Default)
+
+echo 0 > /sys/class/misc/boeffla_sound/boeffla_sound

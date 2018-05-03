@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+#AGNi Vibrator Magnitude
+#Set vibration level for AOSP roms :
+#18 (low)
+
+chmod 666 /sys/vibrator/pwm_val
+echo 18 > /sys/vibrator/pwm_val
+chmod 444 /sys/vibrator/pwm_val
+

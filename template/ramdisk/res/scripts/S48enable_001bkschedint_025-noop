@@ -1,0 +1,9 @@
+#!/system/bin/sh
+#Scheduler (int SD)
+#Change I/O scheduler for internal SD memory:
+#Noop
+
+chmod 666 /sys/block/mmcblk0/queue/scheduler
+echo "noop" > /sys/block/mmcblk0/queue/scheduler
+chmod 444 /sys/block/mmcblk0/queue/scheduler
+

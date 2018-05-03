@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Headphone volume
+#Change headphone volume:
+#Vol 57 (AGNi default)
+
+echo "57 57" > /sys/class/misc/boeffla_sound/headphone_volume

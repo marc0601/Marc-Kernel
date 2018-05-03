@@ -1,0 +1,7 @@
+#!/sbin/busybox sh
+#Wireless Charging Rate
+#Set charging rate when charging Wirelessly
+#900 mA
+
+echo 900 > /sys/kernel/charge_levels/charge_level_wireless
+

@@ -2140,6 +2140,12 @@ config MACH_KONA_SENSOR
 	  YAS532 / YAMAHA
 	  GP2A030A / SHARP
 
+config CHARGE_LEVEL
+	bool "Charge level interface"
+	default y
+	help
+	  Allows configuration of ac and usb charging levels
+
 config MACH_GD2_SENSOR
 	bool "GD2 Sensor Enable"
 	help

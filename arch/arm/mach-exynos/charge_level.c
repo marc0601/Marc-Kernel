@@ -185,18 +185,9 @@ __ATTR(charge_level_ac, 0666, charge_level_ac_show, charge_level_ac_store);
 static struct kobj_attribute charge_level_usb_attribute =
 __ATTR(charge_level_usb, 0666, charge_level_usb_show, charge_level_usb_store);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-static struct attribute *charge_level_attrs[] = {
-&charge_level_ac_attribute.attr,
-&charge_level_usb_attribute.attr,
-NULL,
-=======
 static struct kobj_attribute charge_level_wireless_attribute =
 __ATTR(charge_level_wireless, 0666, charge_level_wireless_show, charge_level_wireless_store);
 
-=======
->>>>>>> 729f06e... samsung_battery: Charge level interface v2
 static struct kobj_attribute ignore_unstable_power_attribute =
 __ATTR(ignore_unstable_power, 0666, ignore_unstable_power_show, ignore_unstable_power_store);
 
@@ -210,18 +201,14 @@ static struct attribute *charge_level_attrs[] =
 {
 	&charge_level_ac_attribute.attr,
 	&charge_level_usb_attribute.attr,
-<<<<<<< HEAD
 	&charge_level_wireless_attribute.attr,
 	&ignore_unstable_power_attribute.attr,
 	&ignore_safety_margin_attribute.attr,
 	&charge_info_attribute.attr,
 	NULL,
->>>>>>> b22b268... samsung_battery: Add wireless level to charge level interface
-=======
 	&ignore_unstable_power_attribute.attr,
 	&ignore_safety_margin_attribute.attr,
 	NULL,
->>>>>>> 729f06e... samsung_battery: Charge level interface v2
 };
 
 static struct attribute_group charge_level_attr_group = 

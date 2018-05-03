@@ -2136,11 +2136,7 @@ config MACH_KONA_SENSOR
 	help
 	  Support sensors of KONA boards
 
-	  BMA254 / BOSCH
-	  YAS532 / YAMAHA
-	  GP2A030A / SHARP
 
-<<<<<<< HEAD
 config MACH_GD2_SENSOR
 	bool "GD2 Sensor Enable"
 	help
@@ -2174,13 +2170,9 @@ config PM_DEBUG_WAKEUP_RESET
 	help
 	  This configuratoin is only for debugging the PM interrupt issue.
 =======
-          BMA254 / BOSCH
-          YAS532 / YAMAHA
-          GP2A030A / SHARP
 
 config CHARGE_LEVEL
 	bool "Charge level interface"
 	default y
 	help
 	  Allows configuration of ac and usb charging levels
->>>>>>> 1b769bf... samsung_battery: Charge level interface

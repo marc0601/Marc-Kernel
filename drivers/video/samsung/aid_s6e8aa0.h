@@ -21,7 +21,6 @@
 #define aid_184nit_F8_18th		0x27
 #define aid_182nit_F8_18th		0x34
 #define aid_180nit_110nit_F8_18th	0x42
-<<<<<<< HEAD
 #define aid_180nit_110nit_F8_1st	aid_188nit_20nit_F8_1st
 #define aid_100nit_20nit_F8_1st	aid_188nit_20nit_F8_1st
 #define aid_108nit_F8_18th		0x38
@@ -31,7 +30,6 @@
 #define aid_100nit_F8_18th		0x22
 #define aid_90nit_F8_18th		0x5E
 #define aid_80nit_F8_18th		0x86
-=======
 #define aid_180nit_110nit_F8_1st	0x59
 #define aid_100nit_20nit_F8_1st	0x59
 #define aid_108nit_F8_18th		0x04
@@ -41,7 +39,6 @@
 #define aid_100nit_F8_18th		0x5E
 #define aid_90nit_F8_18th		0x73
 #define aid_80nit_F8_18th		0x88
->>>>>>> aefb884... Video driver: fix new brightness settings
 #define aid_70nit_F8_18th		0x90
 #define aid_60nit_F8_18th		0x97
 #define aid_50nit_F8_18th		0x9B

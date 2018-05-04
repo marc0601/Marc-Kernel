@@ -558,6 +558,9 @@ static ssize_t show_scaling_setspeed(struct cpufreq_policy *policy, char *buf)
 extern ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf);
 extern ssize_t store_UV_mV_table(struct cpufreq_policy *policy,
                                       const char *buf, size_t count);
+extern ssize_t store_UV_uV_table(struct cpufreq_policy *policy,
+				 const char *buf, size_t count);
+extern ssize_t show_UV_uV_table(struct cpufreq_policy *policy, char *buf);
 
 /* sysfs interface for ASV level */
 extern ssize_t show_asv_level(struct cpufreq_policy *policy, char *buf);
@@ -595,6 +598,7 @@ cpufreq_freq_attr_rw(scaling_governor);
 cpufreq_freq_attr_rw(scaling_setspeed);
 /* UV table */
 cpufreq_freq_attr_rw(UV_mV_table);
+cpufreq_freq_attr_rw(UV_uV_table);
 /* ASV level */
 cpufreq_freq_attr_rw(asv_level);
 
@@ -611,6 +615,7 @@ static struct attribute *default_attrs[] = {
 	&scaling_available_governors.attr,
 	&scaling_setspeed.attr,
 	&UV_mV_table.attr,
+	&UV_uV_table.attr,
 	&asv_level.attr,
 	NULL
 };

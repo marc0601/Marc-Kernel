@@ -72,7 +72,6 @@
             },
             {
                SSeekBar:{
-                  default:1313,
                   title:"1600 MHz",
                   action:"cpuvolt 1600",
                   unit:"mV",
@@ -84,7 +83,6 @@
             },
             {
                SSeekBar:{
-                  default:1263,
                   title:"1500 MHz",
                   action:"cpuvolt 1500",
                   unit:"mV",
@@ -96,7 +94,6 @@
             },
             {
                SSeekBar:{
-                  default:1225,
                   title:"1400 MHz",
                   action:"cpuvolt 1400",
                   unit:"mV",
@@ -108,7 +105,6 @@
             },
             {
                SSeekBar:{
-                  default:1175,
                   title:"1300 MHz",
                   action:"cpuvolt 1300",
                   unit:"mV",
@@ -120,7 +116,6 @@
             },
             {
                SSeekBar:{
-                  default:1138,
                   title:"1200 MHz",
                   action:"cpuvolt 1200",
                   unit:"mV",
@@ -132,7 +127,6 @@
             },
             {
                SSeekBar:{
-                  default:1100,
                   title:"1100 MHz",
                   action:"cpuvolt 1100",
                   unit:"mV",
@@ -144,7 +138,6 @@
             },
             {
                SSeekBar:{
-                  default:1075,
                   title:"1000 MHz",
                   action:"cpuvolt 1000",
                   unit:"mV",
@@ -156,7 +149,6 @@
             },
             {
                SSeekBar:{
-                  default:1050,
                   title:"900 MHz",
                   action:"cpuvolt 900",
                   unit:"mV",
@@ -168,7 +160,6 @@
             },
             {
                SSeekBar:{
-                  default:1013,
                   title:"800 MHz",
                   action:"cpuvolt 800",
                   unit:"mV",
@@ -180,7 +171,6 @@
             },
             {
                SSeekBar:{
-                  default:988,
                   title:"700 MHz",
                   action:"cpuvolt 700",
                   unit:"mV",
@@ -192,7 +182,6 @@
             },
             {
                SSeekBar:{
-                  default:963,
                   title:"600 MHz",
                   action:"cpuvolt 600",
                   unit:"mV",
@@ -204,7 +193,6 @@
             },
             {
                SSeekBar:{
-                  default:950,
                   title:"500 MHz",
                   action:"cpuvolt 500",
                   unit:"mV",
@@ -216,7 +204,6 @@
             },
             {
                SSeekBar:{
-                  default:938,
                   title:"400 MHz",
                   action:"cpuvolt 400",
                   unit:"mV",
@@ -228,7 +215,6 @@
             },
             {
                SSeekBar:{
-                  default:925,
                   title:"300 MHz",
                   action:"cpuvolt 300",
                   unit:"mV",
@@ -240,7 +226,6 @@
             },
             {
                SSeekBar:{
-                  default:913,
                   title:"200 MHz",
                   action:"cpuvolt 200",
                   unit:"mV",
@@ -252,7 +237,6 @@
             },
             {
                   SSeekBar:{
-                  default:900,
                   title:"100 MHz",
                   action:"cpuvolt 100",
                   unit:"mV",

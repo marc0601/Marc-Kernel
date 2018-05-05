@@ -33,6 +33,10 @@
 #include <linux/sensor/cm36651.h>
 #include <linux/sensor/sensors_core.h>
 
+#ifdef CONFIG_TOUCH_WAKE
+#include <linux/touch_wake.h>
+#endif
+
 /* For debugging */
 #undef	CM36651_DEBUG
 
@@ -479,6 +483,12 @@ static ssize_t proximity_enable_store(struct device *dev,
 		return -EINVAL;
 	}
 
+#ifdef CONFIG_TOUCH_WAKE
+	if (!new_value) { // Yank555.lu : Proxy disabled, consider proximity not detected
+		proximity_off();
+	}
+#endif
+
 	mutex_lock(&cm36651->power_lock);
 	pr_info("%s, new_value = %d, threshold = %d\n", __func__, new_value,
 		ps_reg_setting[1][1]);
@@ -509,11 +519,17 @@ static ssize_t proximity_enable_store(struct device *dev,
 			ABS_DISTANCE, val);
 		input_sync(cm36651->proximity_input_dev);
 
+#ifdef CONFIG_TOUCH_WAKE
+		if (!val) { // 0 is close = proximity detected
+			proximity_detected();
+		} else {
+			proximity_off();
+		}
+#endif
+
 		enable_irq(cm36651->irq);
-		enable_irq_wake(cm36651->irq);
 	} else if (!new_value && (cm36651->power_state & PROXIMITY_ENABLED)) {
 		cm36651->power_state &= ~PROXIMITY_ENABLED;
-		disable_irq_wake(cm36651->irq);
 		disable_irq(cm36651->irq);
 		/* disable settings */
 		cm36651_i2c_write_byte(cm36651, CM36651_PS, PS_CONF1,
@@ -748,6 +764,16 @@ irqreturn_t cm36651_irq_thread_fn(int irq, void *data)
 	/* 0 is close, 1 is far */
 	input_report_abs(cm36651->proximity_input_dev, ABS_DISTANCE, val);
 	input_sync(cm36651->proximity_input_dev);
+
+// Yank555.lu : this is where we will know is something changes in proximity detection
+#ifdef CONFIG_TOUCH_WAKE
+	if (!val) { // 0 is close = proximity detected
+		proximity_detected();
+	} else {
+		proximity_off();
+	}
+#endif
+
 	wake_lock_timeout(&cm36651->prx_wake_lock, 3 * HZ);
 #ifdef CONFIG_SLP
 	pm_wakeup_event(cm36651->proximity_dev, 0);
@@ -895,7 +921,7 @@ static void cm36651_work_func_light(struct work_struct *work)
 #ifdef CM36651_DEBUG
 	pr_info("%s, red = %u green = %u blue = %u white = %u\n",
 		__func__, cm36651->color[0]+1, cm36651->color[1]+1,
-		cm36651->color[2]+1, cm36651->color[3]+1);
+		cm36651->color[2]+1, val_whitecm36651->color[3]1);
 #endif
 }
 
@@ -1251,7 +1277,6 @@ static int cm36651_i2c_remove(struct i2c_client *client)
 
 	/* free irq */
 	if (cm36651->power_state & PROXIMITY_ENABLED) {
-		disable_irq_wake(cm36651->irq);
 		disable_irq(cm36651->irq);
 	}
 	free_irq(cm36651->irq, cm36651);

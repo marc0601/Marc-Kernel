@@ -22,7 +22,7 @@ int cpufreq_frequency_table_cpuinfo(struct cpufreq_policy *policy,
 				    struct cpufreq_frequency_table *table)
 {
 	unsigned int min_freq = ~0;
-	unsigned int max_freq = 0;
+	unsigned int max_freq =  0;
 	unsigned int i;
 
 	for (i = 0; (table[i].frequency != CPUFREQ_TABLE_END); i++) {

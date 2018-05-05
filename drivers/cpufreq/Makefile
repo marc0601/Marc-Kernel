@@ -7,13 +7,37 @@ obj-$(CONFIG_CPU_FREQ_STAT)             += cpufreq_stats.o
 obj-$(CONFIG_CPU_FREQ_GOV_PERFORMANCE)	+= cpufreq_performance.o
 obj-$(CONFIG_CPU_FREQ_GOV_POWERSAVE)	+= cpufreq_powersave.o
 obj-$(CONFIG_CPU_FREQ_GOV_USERSPACE)	+= cpufreq_userspace.o
-obj-$(CONFIG_CPU_FREQ_GOV_ONDEMAND)	+= cpufreq_ondemand.o
 obj-$(CONFIG_CPU_FREQ_GOV_SLP)	+= cpufreq_slp.o
 obj-$(CONFIG_CPU_FREQ_GOV_CONSERVATIVE)	+= cpufreq_conservative.o
+obj-$(CONFIG_CPU_FREQ_GOV_ZZMOOVE)      += cpufreq_zzmoove.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVE)	+= cpufreq_interactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_ADAPTIVE)	+= cpufreq_adaptive.o
 obj-$(CONFIG_CPU_FREQ_GOV_PEGASUSQ)	+= cpufreq_pegasusq.o
 obj-$(CONFIG_CPU_FREQ_GOV_PEGASUSQPLUS)	+= cpufreq_pegasusqplus.o
+obj-$(CONFIG_CPU_FREQ_GOV_LULZACTIVEQ)	+= cpufreq_lulzactiveq.o
+obj-$(CONFIG_CPU_FREQ_GOV_SMARTASS2)	+= cpufreq_smartass2.o
+obj-$(CONFIG_CPU_FREQ_GOV_INTELLIACTIVE)+= cpufreq_intelliactive.o
+obj-$(CONFIG_CPU_FREQ_GOV_ALUCARD)		+= cpufreq_alucard.o
+obj-$(CONFIG_CPU_FREQ_GOV_DARKNESS)		+= cpufreq_darkness.o
+obj-$(CONFIG_CPU_FREQ_GOV_WHEATLEY)	+= cpufreq_wheatley.o
+
+# Compiler optimizations for cpu governor code
+CFLAGS_cpufreq_performance.o += -Ofast
+CFLAGS_cpufreq_powersave.o += -Ofast
+CFLAGS_cpufreq_userspace.o += -Ofast
+CFLAGS_cpufreq_slp.o += -Ofast
+CFLAGS_cpufreq_conservative.o += -Ofast
+CFLAGS_cpufreq_zzmoove.o += -Ofast
+CFLAGS_cpufreq_interactive.o += -Ofast
+CFLAGS_cpufreq_adaptive.o += -Ofast
+CFLAGS_cpufreq_pegasusq.o += -Ofast
+CFLAGS_cpufreq_pegasusqplus.o += -Ofast
+CFLAGS_cpufreq_lulzactiveq.o += -Ofast
+CFLAGS_cpufreq_smartass2.o += -Ofast
+CFLAGS_cpufreq_intelliactive.o += -Ofast
+CFLAGS_cpufreq_alucard.o += -Ofast
+CFLAGS_cpufreq_darkness.o += -Ofast
+CFLAGS_cpufreq_wheatley.o += -Ofast
 
 # CPUfreq cross-arch helpers
 obj-$(CONFIG_CPU_FREQ_TABLE)		+= freq_table.o

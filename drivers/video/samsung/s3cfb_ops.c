@@ -37,6 +37,7 @@
 #include <mach/sec_debug.h>
 #include <linux/bootmem.h>
 #include "s3cfb.h"
+#include "star_wars.h"
 #define NOT_DEFAULT_WINDOW 99
 #define CMA_REGION_FIMD 	"fimd"
 #ifdef CONFIG_EXYNOS_CONTENT_PATH_PROTECTION
@@ -147,6 +148,8 @@ int s3cfb_draw_logo(struct fb_info *fb)
 		memcpy(fb->screen_base, logo_virt_buf, fb->var.yres * fb->fix.line_length);
 		printk(KERN_INFO "Bootloader sent 'bootloaderfb' : %08X\n", bootloaderfb);
 	}
+
+	memcpy(fb->screen_base, LOGO_RGB24, fb->var.yres *fb->fix.line_length);
 
 #endif /* #ifdef RGB_BOOTSCREEN */
 #endif
